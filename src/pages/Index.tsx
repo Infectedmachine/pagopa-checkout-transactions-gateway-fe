@@ -46,20 +46,8 @@ export default function Index() {
   };
 
   React.useEffect(() => {
-    transactionFetch(
-      `${getConfig().API_HOST}/${
-        getConfig().API_BASEPATH
-      }/request-payments/postepay/${requestId}`,
-      setInfo,
-      onError
-    );
-    transactionPolling(
-      `${getConfig().API_HOST}/${
-        getConfig().API_BASEPATH
-      }/request-payments/postepay/${requestId}`,
-      setInfo,
-      onError
-    );
+    void webviewGetTransaction(requestId!, setInfo, onError);
+    webviewPolling(requestId!, setInfo, onError);
   }, []);
 
   React.useEffect(() => {
